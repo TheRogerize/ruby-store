@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
       # '/users/show' # replace with the path you want
     # end
     def after_sign_in_path_for(user)
+      @profile = Profile.new
+      @profile.user_id = current_user.id
+      @profile.save
       if current_user.sign_in_count == 1
         user_path(current_user.id)#see note below
         else

@@ -1,0 +1,37 @@
+p#notice = notice
+
+p
+  strong Age:
+  = @profile.age
+
+p
+  strong Phone number:
+  = @profile.phone_number
+
+p
+  strong Gender:
+  = @profile.gender
+
+p
+  strong Address line 1:
+  = @profile.address_line_1
+
+p
+  strong Address line 2:
+  = @profile.address_line_2
+
+p
+  strong Zip code:
+  = @profile.zip_code
+
+p
+  strong City:
+  = @profile.city
+
+p
+  strong Country:
+  = @profile.country
+
+=> link_to 'Edit', edit_profile_path(@profile)
+'|
+=< link_to 'Back', profiles_path
