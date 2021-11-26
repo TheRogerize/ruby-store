@@ -1,0 +1,20 @@
+nav.flex.items-center.justify-center.xs:justify-between.flex-wrap.bg-indigo-500.p-6
+  .flex.items-center.flex-shrink-0.text-white.mr-6
+    = image_tag "letter-r.png", style: 'height:50px;width:auto; margin-right: 10px' 
+    span.font-semibold.text-xl.tracking-tight
+    | Rolify
+  .items-center.flex.justify-end.lg:flex.md:flex.md:flex-no-wrap.w-auto
+    - if @user_signed_in
+      .text-sm.lg:flex-grow
+        = link_to "My Account", profiles_path, class: "inline-block text-sm px-4 py-2 leading-none border-none rounded text-white hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" 
+        = link_to "Log out", destroy_user_session_path, method: :delete, class: "inline-block text-sm px-4 py-2 ml-4 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 lg:mt-0" 
+        = link_to "Store", destroy_user_session_path, method: :delete, class: "inline-block text-sm px-4 py-2 ml-4 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white mt-4 lg:mt-0" 
+        
+    - else 
+      .text-sm.lg:flex-grow.mx-2
+        .text-sm.lg:flex-grow
+          = link_to "Sign In", "sign_in", class: "inline-block text-sm px-4 py-2 leading-none border-none rounded text-white hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" 
+      .text-sm.lg:flex-grow.mx-2
+        .text-sm.lg:flex-grow
+          = link_to "Sign Up", "sign_up", class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" 
+      .text-sm.lg:flex-grow

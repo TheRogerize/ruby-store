@@ -1,14 +1,11 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
-
   # GET /profiles or /profiles.json
   def index
-    @profiles = Profile.all
+    @full_name = "#{ current_user.first_name } #{ current_user.last_name }"
+    @profile = Profile.find_by(user_id: current_user.id)
   end
 
-  # GET /profiles/1 or /profiles/1.json
-  def show
-  end
 
   # GET /profiles/new
   def new
@@ -17,29 +14,40 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    @profile = Profile.find_by(user_id: current_user.id)
+    if @profile
+      Rails.logger.debug("Profile Encontrado:: e#{current_user.id}")
+      puts @profile.inspect
+    end
+  #   @profile = Profile.new(profile_params)
+
   end
 
   # POST /profiles or /profiles.json
-  def create
-    @profile = Profile.new(profile_params)
+  # def create
+  #   @profile = Profile.new(profile_params)
 
-    respond_to do |format|
-      if @profile.save
-        format.html { redirect_to @profile, notice: "Profile was successfully created." }
-        format.json { render :show, status: :created, location: @profile }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @profile.save
+  #       format.html { redirect_to @profile, notice: "Profile was successfully created." }
+  #       format.json { render :show, status: :created, location: @profile }
+  #     else
+  #       format.html { render :new, status: :unprocessable_entity }
+  #       format.json { render json: @profile.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /profiles/1 or /profiles/1.json
   def update
+    # @profile = Profile.find_by(user_id: current_user.id)
+    # @profile = Profile.find(params[:id])
+
     respond_to do |format|
+      # Rails.logger.debug("debug::" + @profile)
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: "Profile was successfully updated." }
-        format.json { render :show, status: :ok, location: @profile }
+        format.html { redirect_to profiles_path, notice: "Profile was successfully updated." }
+        format.json { render :show, status: :ok, location: profiles_path }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
@@ -59,7 +67,7 @@ class ProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = Profile.find_by(user_id: current_user.id)
     end
 
     # Only allow a list of trusted parameters through.

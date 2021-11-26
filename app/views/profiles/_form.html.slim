@@ -5,9 +5,9 @@
       ul
         - @profile.errors.full_messages.each do |message|
           li = message
-  .container.mx-5.py-4.px-4.mt-5.flex.justify-center.align-center.items-center
-    w-full.max-w-xs
-      .flex.justify-center.align-center.items-center.text-center.mx-auto.mt-3.mb-5 
+  .container.px-5.py-4.px-4.mt-5.flex.justify-center.align-center.items-center.relative.box-border	
+    w-full.max-w-xs.relative.box-border
+      .flex.justify-center.align-center.items-center.text-center.mx-auto.mt-3.mb-5.relative.box-border 
         h2.text-2xl.font-medium = "Just one more step and you are ready to go!"
       .bg-white.shadow-md.rounded.px-8.pt-6.pb-8.mb-4
           .field
@@ -18,7 +18,7 @@
             = f.number_field :age, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           .field
             = f.label :gender
-            = f.text_field :gender, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            = f.select :gender, options_for_select(['Male', 'Female', 'Prefer not to say']), { }, { class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' }
           .field
             = f.label :address_line_1
             = f.text_field :address_line_1, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -34,5 +34,8 @@
           .field
             = f.label :country
             = f.text_field :country, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          .actions = f.submit
+          / .bg-blue-500.hover:bg-blue-700.text-white.font-bold.py-2.px-4.rounded.focus:outline-none.focus:shadow-outline = f.submit
+          .actions.text-right
+            = f.submit "Update", class: "cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold mt-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            / = f.submit, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"%>
       

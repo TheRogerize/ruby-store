@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_one :profile
-  after_create :create_profile
+  # after_create :build_profile
+  before_create :build_profile
+  accepts_nested_attributes_for :profile
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -13,8 +15,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :trackable
-
-  # after_create :create_profile
-
   
 end

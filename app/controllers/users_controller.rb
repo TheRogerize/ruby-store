@@ -1,11 +1,7 @@
 class UsersController < ApplicationController
   def profile
     @profile = Profile.find_by(user_id: current_user.id)
-    if @profile
-      @profile = "ENCONTRADO"
-    else 
-      @profile = " eteve"
-    end
+  
     @full_name = "#{ current_user.first_name } #{ current_user.last_name }"
   end
   
