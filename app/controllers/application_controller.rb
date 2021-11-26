@@ -9,13 +9,17 @@ class ApplicationController < ActionController::Base
     # def after_sign_up_path_for(user)
       # '/users/show' # replace with the path you want
     # end
-    def after_sign_in_path_for(user)
-      if current_user.sign_in_count == 1
-        user_path(current_user.id)#see note below
-        else
-          home_home_path
-      end
-    end
+    # def after_sign_in_path_for(user)
+    #   # @profile = Profile.new
+    #   # @profile.user_id = current_user.id
+    #   # @profile.save
+    #     new_profile_path#see note below
+    #     if current_user.sign_in_count == 1
+    #     new_profile_path#see note below
+    #     # else
+    #       # home_home_path
+    #   end
+    # end
   end
 
 # class ApplicationController < ActionController::Base

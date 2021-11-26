@@ -1,21 +1,22 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus"
 
+// Connects to data-controller="alert"
 export default class extends Controller {
-  static targets = ["message", "hide", "alert", "show"];
-
-  hideAlert() {
-    // console.log(`${this.value.textContent}`);
-   //  console.log(`${this.input.type}`);
-   console.log("ENTRANDO")
-    console.log(this)
+  static targets = [ "alertElement" ]
+  connect() {
   }
 
-  get value() {
-    console.log("this.messageTarget")
-    console.log(this.messageTarget)
-    return this.messageTarget;
+  closeOnTimeOut(timeout) {
+    setTimeout(() => {
+      this.close()
+    }, timeout)
   }
-  get input() {
-    return this.unhideTarget;
+
+  close(e) {
+    this.alertElementTargets.forEach((element, index) => {
+      if(element.id == e.params.id) {
+        element.classList.add("hidden")
+      }
+    });
   }
 }
