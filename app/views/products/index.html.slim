@@ -1,0 +1,9 @@
+div  class="grid grid-cols-1 gap-5 px-5 py-5 mx-5 mb-4" data-controller="live-search"
+  = render(Search::SearchBarComponent.new(@selected_category))
+  
+  div class="flex flex-wrap justify-center gap-5 px-5 py-5 mx-5 mb-4 sm:justify-center" id="results" data-target="live-search.results"
+    - if @products.length > 0
+      - @products.each do |product|
+        = render(Card::CardComponent.new(product))
+    - else
+        h2 class="text-center" = "No products could be found, please try with another name or category."

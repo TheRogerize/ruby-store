@@ -1,0 +1,33 @@
+div class="container flex items-center justify-center px-4 py-4 mx-5 mt-5 align-center"
+  div class="w-full max-w-xs"
+    div class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md"
+      = form_for @product do |f|
+        - if @product.errors.any?
+          #error_explanation
+            h2 = "#{pluralize(@product.errors.count, 'error')} prohibited this product from being saved:"
+            ul
+              - @product.errors.full_messages.each do |message|
+                li = message
+        = @categories
+        .field
+          = f.label :name
+          = f.text_field :name, class: "shadow appearance-none border rounded w-full mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        .field
+          = f.label :description
+          = f.text_area :description, class: "shadow appearance-none border rounded w-full mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        .field
+          = f.label :price
+          = f.text_field :price, class: "shadow appearance-none border rounded w-full mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        .field
+          = f.label :stock
+          = f.number_field :stock, class: "shadow appearance-none border rounded w-full mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        .field
+          = f.label :category_id
+          = f.select :category_id, options_from_collection_for_select(@categories, :id, :name, @product.category_id), :include_blank => false, :prompt => "Select a Category!"
+        .field
+          = f.label :image
+          = f.file_field :image, class: "shadow appearance-none border rounded w-full mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        .actions.text-center
+          = f.submit "Create", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold mt-4 mb-3 py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+
+

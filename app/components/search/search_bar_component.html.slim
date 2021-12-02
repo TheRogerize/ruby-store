@@ -1,0 +1,6 @@
+= form_with url: products_path, local:false, method: :get, data: { local: false, action: "ajax:success->live-search#handleResults", target: "live-search.form" } do |form| 
+  div class="grid items-center content-center justify-center max-w-md grid-cols-1 mx-auto sm:grid-cols-2"
+    div class="max-w-xs py-2 border-b border-teal-500"
+      = form.text_field :search, data: { action: "input->live-search#search", placeholder: 'eg: Franela', :class => 'mb-4' }, autocomplete: "off"
+    div class=""
+      = select_tag 'category', options_for_select(@categories, @selected_category), data: {action: "change->live-search#search"} ,:include_blank => "All", :default => nil, class: 'h-1010 pl-3 pr-6 ml-3 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline'

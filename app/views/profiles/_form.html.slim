@@ -1,0 +1,41 @@
+= form_for @profile do |f|
+  - if @profile.errors.any?
+    #error_explanation class="flex flex-wrap justify-center mx-auto text-center"
+      h2 = "#{pluralize(@profile.errors.count, 'error')} prohibited this profile from being saved:"
+      ul
+        - @profile.errors.full_messages.each do |message|
+          li = message
+  div class="container box-border relative flex items-center justify-center px-4 px-5 py-4 mt-5 align-center"	
+    div class="box-border relative w-full max-w-xs"
+      div class="box-border relative flex items-center justify-center mx-auto mt-3 mb-5 text-center align-center" 
+        h2 class="text-2xl font-medium" = "Just one more step and you are ready to go!"
+      div class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md"
+          .field
+            = f.label :phone_number
+            = f.text_field :phone_number, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          .field
+            = f.label :age
+            = f.number_field :age, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          .field
+            = f.label :gender
+            = f.select :gender, options_for_select(['Male', 'Female', 'Prefer not to say']), { }, { class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' }
+          .field
+            = f.label :address_line_1
+            = f.text_field :address_line_1, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          .field
+            = f.label :address_line_2
+            = f.text_field :address_line_2, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          .field
+            = f.label :zip_code
+            = f.text_field :zip_code, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          .field
+            = f.label :city
+            = f.text_field :city, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          .field
+            = f.label :country
+            = f.text_field :country, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          / .bg-blue-500.hover:bg-blue-700.text-white.font-bold.py-2.px-4.rounded.focus:outline-none.focus:shadow-outline = f.submit
+          .actions.text-right
+            = f.submit "Update", class: "cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold mt-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            / = f.submit, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"%>
+      
