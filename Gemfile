@@ -40,6 +40,8 @@ gem 'stimulus-rails'
 
 gem 'hirb'
 
+gem "will_paginate", "~> 3.0.4", :require => nil
+
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 

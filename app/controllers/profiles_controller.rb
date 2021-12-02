@@ -19,29 +19,10 @@ class ProfilesController < ApplicationController
       Rails.logger.debug("Profile Encontrado:: e#{current_user.id}")
       puts @profile.inspect
     end
-  #   @profile = Profile.new(profile_params)
-
   end
-
-  # POST /profiles or /profiles.json
-  # def create
-  #   @profile = Profile.new(profile_params)
-
-  #   respond_to do |format|
-  #     if @profile.save
-  #       format.html { redirect_to @profile, notice: "Profile was successfully created." }
-  #       format.json { render :show, status: :created, location: @profile }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @profile.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
   # PATCH/PUT /profiles/1 or /profiles/1.json
   def update
-    # @profile = Profile.find_by(user_id: current_user.id)
-    # @profile = Profile.find(params[:id])
 
     respond_to do |format|
       # Rails.logger.debug("debug::" + @profile)

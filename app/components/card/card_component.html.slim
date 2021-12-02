@@ -1,0 +1,19 @@
+.max-w-sm.border-box.relative.rounded.overflow-hidden.shadow-lg.my-4.bg-gray-100 class="card__product w-3/3 sm:max-w-xs sm:w-1/4 lg:w-1/5"
+  =  image_tag(@image, :class => "object-cover h-48 w-full")  
+  .border-box.relative.px-3.pt-4
+    .font-bold.text-xl.mb-2 
+        = @name
+    p class="text-base text-gray-700"
+        = @description
+    small.font-small.text-gray-400
+        = @category
+    br
+    small.font-small.text-gray-400
+        = "Qty: #{@stock}"
+
+    div.w-full.text-indigo-600.rounded-full.pr-3.py-1.text-sm.font-semibold.mr-2.mb-2.text-left
+        = "$#{@price}"
+        
+  div.flex.flex-wrap.content-end.h-16.px-3.mt-auto.overflow-auto.mb-3
+      .w-full.bg-indigo-600.flex-1.text-white.rounded-full.px-3.py-2.text-sm.font-semibold.mx-3.pb-2.mt-auto.text-center.cursor-pointer
+        | Add to cart    

@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_one :profile
-  # after_create :build_profile
   before_create :build_profile
   accepts_nested_attributes_for :profile
 
